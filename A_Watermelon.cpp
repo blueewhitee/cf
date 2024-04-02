@@ -34,33 +34,17 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 // ===================================END Of the input module ==========================================
 
 
-void solve(vector<string>&v,int &n){
-    for(int i =0;i<n;i++){
-        string temp = v[i];
-        int size = v[i].size();
-        if(size>10){
-           
-            v[i] = v[i][0]+ to_string(size-2)+v[i][size-1];
-        }
-    }
-    for(auto it:v){
-        cout<<it<<'\n';
-    }
+void solve(string &s)
+{
+    stoi(s);
+    cout<<s;
+}    
 
-    
-}
 
 int32_t main()
 {
-    int n;
-    cin>>n;
-    vector<string>v;
-    for(int i =0;i<n;i++){
-        string s;
-        cin>>s;
-        v.push_back(s);
-    }
-    solve(v,n);
-
+    string s;
+    cin>>s;
+    solve(s);
     return 0;
 }

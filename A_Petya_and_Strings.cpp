@@ -34,33 +34,53 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 // ===================================END Of the input module ==========================================
 
 
-void solve(vector<string>&v,int &n){
-    for(int i =0;i<n;i++){
-        string temp = v[i];
-        int size = v[i].size();
-        if(size>10){
-           
-            v[i] = v[i][0]+ to_string(size-2)+v[i][size-1];
-        }
-    }
-    for(auto it:v){
-        cout<<it<<'\n';
-    }
-
+void solve(){
+    int n=1,m=0;
+    string s;
+    cin>>n;
+    vi v(n);
+    cin>>v;
     
 }
 
 int32_t main()
 {
-    int n;
-    cin>>n;
-    vector<string>v;
-    for(int i =0;i<n;i++){
-        string s;
-        cin>>s;
-        v.push_back(s);
+ 
+ ios_base::sync_with_stdio(false);
+ cin.tie(NULL);
+   string s1,s2;
+   int s_1{0};
+   int s_2{0};
+    cin>>s1;
+    cin>>s2;
+    for(int i=0;i<s1.size();i++){
+        int val=s1[i];
+        
+            s1[i] = tolower(s1[i]);
+            val=s1[i];
+        
+        s_1 += val;
+        }
+    
+for(int i=0;i<s2.size();i++)
+    {
+        int val=s2[i];
+        
+            s2[i] = tolower(s2[i]);
+            val=s2[i];
+        
+        s_2+=val;
     }
-    solve(v,n);
 
-    return 0;
+    
+
+  //  funcc(s_1,s_2);
+  if(s1>s2){
+            
+            cout<<"1";
+        }
+    else if(s1==s2){
+            cout<<"0";
+        }
+        else{cout<<"-1";}   return 0;
 }

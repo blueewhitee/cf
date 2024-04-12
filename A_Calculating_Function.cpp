@@ -34,13 +34,18 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 // ===================================END Of the input module ==========================================
 long long  odd(long long  T){
     long long  sum{0};
-    long long  i{1};
-    for(long long  i=1;i<=T;i+=2){
-        sum += -(i);
+    long long num = 1000000000000000LL/2;  // Use LL to specify a long long literal
+
+    long long odd{-1};
+    vector<long long>v;
+    for(long long  i=0;i<num;i++){
+        odd+=-2;
+        v.push_back((odd));
     }
+
     
 
-      return sum;
+      return 0;
 }
 long long  even(long long  T){
     long long  sum{0};
@@ -67,10 +72,13 @@ int32_t main()
  
  ios_base::sync_with_stdio(false);
  cin.tie(NULL);
-
-    long long  T = 1;
-    //long long int sum{0};
-    cin >> T;
-    cout<<odd(T)+even(T);
+  long long n{0};
+  cin>>n;
+  if(n%2==0){
+    cout<<(n/2);
+  }
+  else{
+    cout<<-((n/2)+1);
+  }
     return 0;
 }

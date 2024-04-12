@@ -34,37 +34,15 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 // ===================================END Of the input module ==========================================
 
 
-void solve(){
-    int n,c,d;
-    cin>>n>>c>>d;
-    vector<int>a(n*n);
-    for(auto &it:a){
-        cin>>it;
-    }
-    int min = *min_element(a.begin(),a.end());
-    vector<vector<int>>temp(n,vector<int>(n));
-    temp[0][0]=min;
-    for(int j=0;j<n-1;j++){
-        temp[0][j+1] = temp[0][j]+d;
-    }
-    for(int i=0;i<n-1;i++){
-        for(int j=0;j<n;j++){
-            temp[i+1][j]=temp[i][j]+c;
+void solve(string &s){
+    set<int>st;
+    for(int i=0;i<s.size();i++){
+        if(s[i]!=' ' && s[i]!=','&&s[i]!='{'&&s[i]!='}'){
+            st.insert(s[i]);
         }
     }
-    vector<int>b;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            b.push_back(temp[i][j]);
-        }
-    }
-    sort(a.begin(),a.end());
-    sort(b.begin(),b.end());
-    if(a==b){
-        cout<<"YES";
-    }
-    else{cout<<"NO";}
-    cout<<'\n';
+    cout<<st.size();
+    
 }
 
 int32_t main()
@@ -72,12 +50,10 @@ int32_t main()
  
  ios_base::sync_with_stdio(false);
  cin.tie(NULL);
+ string s;
+ getline(cin,s);
 
-    int T = 1;
-    cin >> T;
-    while (T--)
-    {
-        solve();
-    }
+ solve(s);
+ 
     return 0;
 }

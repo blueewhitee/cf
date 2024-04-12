@@ -34,37 +34,23 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 // ===================================END Of the input module ==========================================
 
 
-void solve(){
-    int n,c,d;
-    cin>>n>>c>>d;
-    vector<int>a(n*n);
-    for(auto &it:a){
-        cin>>it;
+void solve(int &T){
+    vector<int>v(4,0);
+    for(int i=0;i<4;i++){
+        int e{0};
+        cin>>e;
+        v[i]=e;
     }
-    int min = *min_element(a.begin(),a.end());
-    vector<vector<int>>temp(n,vector<int>(n));
-    temp[0][0]=min;
-    for(int j=0;j<n-1;j++){
-        temp[0][j+1] = temp[0][j]+d;
-    }
-    for(int i=0;i<n-1;i++){
-        for(int j=0;j<n;j++){
-            temp[i+1][j]=temp[i][j]+c;
+    int timur  = v[0];
+    int count{0};
+    for(auto it:v){
+        if(it>timur){
+            count++;
         }
+
     }
-    vector<int>b;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            b.push_back(temp[i][j]);
-        }
-    }
-    sort(a.begin(),a.end());
-    sort(b.begin(),b.end());
-    if(a==b){
-        cout<<"YES";
-    }
-    else{cout<<"NO";}
-    cout<<'\n';
+
+    cout<<count<<'\n';
 }
 
 int32_t main()
@@ -76,8 +62,9 @@ int32_t main()
     int T = 1;
     cin >> T;
     while (T--)
-    {
-        solve();
+    {   
+        
+        solve(T);
     }
     return 0;
 }

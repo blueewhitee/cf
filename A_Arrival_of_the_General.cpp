@@ -34,39 +34,41 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 // ===================================END Of the input module ==========================================
 
 
-void solve(){
-    int n,c,d;
-    cin>>n>>c>>d;
-    vector<int>a(n*n);
-    for(auto &it:a){
-        cin>>it;
-    }
-    int min = *min_element(a.begin(),a.end());
-    vector<vector<int>>temp(n,vector<int>(n));
-    temp[0][0]=min;
-    for(int j=0;j<n-1;j++){
-        temp[0][j+1] = temp[0][j]+d;
-    }
-    for(int i=0;i<n-1;i++){
-        for(int j=0;j<n;j++){
-            temp[i+1][j]=temp[i][j]+c;
+void solve(vector<int>&v,int &T){
+    int max {INT16_MIN};
+    int maxind{0};
+    int minind{0};
+    int min{INT16_MAX};
+    for(int i=0;i<T;i++){
+        if(min>=v[i]){
+            min = v[i];
+            if(minind<i){
+            minind = i;
+            }
+        }
+        if(max<v[i]){
+            max = v[i];
+            if(maxind<i){
+            maxind = i;
+            }
+         
         }
     }
-    vector<int>b;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            b.push_back(temp[i][j]);
-        }
+ // cout<<maxind<<minind<<"ut";
+if(maxind==0&&minind == T-1){
+        cout<<0;
     }
-    sort(a.begin(),a.end());
-    sort(b.begin(),b.end());
-    if(a==b){
-        cout<<"YES";
+  else if(maxind<minind){
+    int forfirst =maxind;
+    int forlast = (T-1)-minind;
+    cout<<forfirst+forlast;
     }
-    else{cout<<"NO";}
-    cout<<'\n';
+    else{
+    int forfirst=maxind-1 ;
+    int forlast = (T-1)-minind;
+    cout<<forfirst+forlast;
+    }
 }
-
 int32_t main()
 {
  
@@ -75,9 +77,12 @@ int32_t main()
 
     int T = 1;
     cin >> T;
-    while (T--)
-    {
-        solve();
+    vector<int>v(T,0);
+    for(int i=0;i<T;i++){
+        int e;
+        cin>>e;
+
+        v[i]=e;
     }
-    return 0;
+    solve(v,T);
 }

@@ -34,37 +34,34 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 // ===================================END Of the input module ==========================================
 
 
-void solve(){
-    int n,c,d;
-    cin>>n>>c>>d;
-    vector<int>a(n*n);
-    for(auto &it:a){
+void solve(int &T){
+    vector<int>v(T);
+    for(auto &it:v){
         cin>>it;
     }
-    int min = *min_element(a.begin(),a.end());
-    vector<vector<int>>temp(n,vector<int>(n));
-    temp[0][0]=min;
-    for(int j=0;j<n-1;j++){
-        temp[0][j+1] = temp[0][j]+d;
-    }
-    for(int i=0;i<n-1;i++){
-        for(int j=0;j<n;j++){
-            temp[i+1][j]=temp[i][j]+c;
+    int i{0};
+    int j{1};
+    int grp{0};
+    int single{0};
+    while(i<v.size()){
+      //  int jpvs = j;
+      if(v[i]==v[j]&& j<v.size()){
+        while(v[i]==v[j]&& j<v.size()){
+
+        j++;
         }
-    }
-    vector<int>b;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            b.push_back(temp[i][j]);
+        i=j;
+        j=i+1;
+        grp++;} 
+        
+        else{
+            i++;
+            j =i+1;
+            single++;
         }
+
     }
-    sort(a.begin(),a.end());
-    sort(b.begin(),b.end());
-    if(a==b){
-        cout<<"YES";
-    }
-    else{cout<<"NO";}
-    cout<<'\n';
+   cout<<grp+single;
 }
 
 int32_t main()
@@ -75,9 +72,21 @@ int32_t main()
 
     int T = 1;
     cin >> T;
-    while (T--)
-    {
-        solve();
-    }
+    if(T>2){
+        solve(T);}
+        else if(T==2){
+            int a{0};
+            int b{0};
+            cin>>a>>b;
+            if((a^b)==0){
+                cout<<1;
+            }
+            else{
+            cout<<2;}
+        }
+        else{
+            cout<<1;
+        }
+    
     return 0;
 }

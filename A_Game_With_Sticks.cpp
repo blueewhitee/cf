@@ -33,29 +33,30 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const ve
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
 
-void solve(string &s)
-{
-   int  n = s.size();
 
-   vector<char>s2;
-   for(int i =0;i<n;i++){
-      if(s[i]!='+'){
-         s2.push_back(s[i]);  
-
-      }
-   }  
- sort(s2.begin(),s2.end());
- for(int i =0; i<s2.size()-1;i++){
-   cout<<s2[i]<<'+';
- }
- cout<<s2[s2.size()-1];
- }    
-
+void solve(){
+    int n=1,m=0;
+    string s;
+    cin>>n;
+    vi v(n);
+    cin>>v;
+    
+}
 
 int32_t main()
 {
-    string s;
-    cin>>s;
-    solve(s);
-    return 0;
+ 
+ ios_base::sync_with_stdio(false);
+ cin.tie(NULL);
+
+    int m,n{0};
+    cin>>m>>n;
+    int r= min(m,n);
+    if(r&1){
+        cout<<"Akshat";
     }
+    else{
+        cout<<"Malvika";
+    }
+    return 0;
+}

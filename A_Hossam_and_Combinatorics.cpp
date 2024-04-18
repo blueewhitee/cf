@@ -33,29 +33,50 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const ve
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
 
-void solve(string &s)
-{
-   int  n = s.size();
 
-   vector<char>s2;
-   for(int i =0;i<n;i++){
-      if(s[i]!='+'){
-         s2.push_back(s[i]);  
+void solve(){
+    int n{0};
+    cin>>n;
+    int m=n;
+    int e{0};
+    map<int,int>mpp;
+    vector<int>v;
+    while(n--){
+        cin>>e;
+        v.push_back(e);
+        mpp[e]++;
+    }
+    int result1{0};
+    int result2{0};
+    sort(v.begin(),v.end());
+    for(auto &it:mpp){
+        if(it.first==v[0]){
+            result1 =it.second;
+        }
+        if(it.first==v[v.size()-1]){
+            result2 = it.second;
+        }
 
-      }
-   }  
- sort(s2.begin(),s2.end());
- for(int i =0; i<s2.size()-1;i++){
-   cout<<s2[i]<<'+';
- }
- cout<<s2[s2.size()-1];
- }    
-
+    }
+    if(mpp.size()>1){
+    cout<<2*result1*result2<<'\n';
+    }
+    else{
+        cout<< m*(m-1)<<'\n';
+    }    
+}
 
 int32_t main()
 {
-    string s;
-    cin>>s;
-    solve(s);
-    return 0;
+ 
+ ios_base::sync_with_stdio(false);
+ cin.tie(NULL);
+
+    int T = 1;
+    cin >> T;
+    while (T--)
+    {
+        solve();
     }
+    return 0;
+}
